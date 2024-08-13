@@ -74,7 +74,8 @@ E005, Pruthavi, Marketing, 45000
 E006, Anjali, IT, 70000
 E007, Kunal, Marketing, 60000
 E008, Mitali, Accounts, 55000
-```# 3: Map Reduce program to calculate the average age for each gender.
+```
+# 3: Map Reduce program to calculate the average age for each gender.
 # 3. mapper.py
 
 ```py
