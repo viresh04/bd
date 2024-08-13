@@ -1,0 +1,75 @@
+#!/usr/bin/python
+import sys
+# input comes from STDIN (standard input)
+for line in sys.stdin:
+    line = line.strip()
+    line = line.split(",")
+    if len(line) >=2:
+        gender = line[1]
+        age = line[2]
+        print '%s\t%s' % (gender, age)
+
+
+reducer.py
+
+#!/usr/bin/python
+#Reducer.py
+import sys
+gender_age = {}
+#Partitoner
+for line in sys.stdin:
+    line = line.strip()
+    gender, age = line.split('\t')
+    if gender in gender_age:
+        gender_age[gender].append(int(age))
+    else:
+        gender_age[gender] = []
+        gender_age[gender].append(int(age))
+#Reducer
+for gender in gender_age.keys():
+    ave_age = sum(gender_age[gender])*1.0 / len(gender_age[gender])
+    print '%s\t%s'% (gender, ave_age)
+
+
+
+****************************************************
+cat  data.csv| python mapper.py  | python reducer.py 
+
+star-all.sh
+
+jps
+hdfs dfs -mkdir /data_age
+
+hdfs dfs -copyFromLocal /home/hduser/Documents/ data.csv  /data_age
+
+hdfs dfs -ls /
+
+hdfs dfs -ls / data_age
+chmod 777 mapper.py reducer.py 
+ls -l
+
+hadoop jar /home/hduser/Documents/hadoop-streaming-2.7.3.jar \
+
+> -input /data_age/ data.csv \
+> -output /data_age/output \
+> -mapper /home/hduser/Documents/mapper.py \
+> -reducer /home/hduser/Documents/reducer.py 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

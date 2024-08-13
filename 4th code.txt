@@ -1,0 +1,63 @@
+ nano data.csv
+
+1, M, 25000, 2, Agree
+2, F, 50000, 1, Disagree
+3,M,75000,0,Neutral
+4,F,80000,2,Agree
+5,F,10000,1,DisAgree
+6,F,20000,3,Neutral
+7,M,17000,0,DisAgree
+8,F,15000,0,DisAgree
+9,M,60000,1,Agree
+10,F,45000,1,Agree
+11,F,46000,3,DisAgree
+12,F,50000,3,Neutral
+
+nano mapper.py
+
+#!/usr/bin/env python
+import sys
+for line in sys.stdin:
+    line = line.strip()
+    line = line.split(",")
+    if len(line) >=2:
+        pid = line[0]
+        opinion = line[4]
+        print '%s\t%s' % (pid, opinion)
+
+ nano reducer.py
+
+#!/usr/bin/env python
+
+import sys
+opiniondic={}
+count=0
+for line in sys.stdin:
+    line = line.strip()
+    pid, opinion = line.split('\t')
+    if opinion in opiniondic:
+        opiniondic[opinion].append(count+1)
+    else:
+        opiniondic[opinion] = []
+        opiniondic[opinion].append(count+1)
+for op in opiniondic.keys():
+    count=len(opiniondic[op])
+    print '%s\t%s'% (op,count)
+
+****
+cat Term4data.csv| python mapper.py | python reducer.py 
+star-all.sh
+
+jps
+hdfs dfs -mkdir /T4
+hdfs dfs -copyFromLocal /home/hduser/Documents/Term4data.csv  /T4
+hdfs dfs -ls /
+chmod 777 mapper.py reducer.py 
+ls -l
+hadoop jar /home/hduser/Documents/hadoop-streaming-2.7.3.jar \
+> -input  /T4/ Term4data.csv \
+> -output  /T4/output \
+> -mapper  /home/hduser/Documents/mapper.py \
+> -reducer  /home/hduser/Documents/reducer.py 
+
+hdfs dfs -cat /T4 /output/part-00000

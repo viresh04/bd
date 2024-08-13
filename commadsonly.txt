@@ -1,0 +1,34 @@
+cd Documents/
+
+nano Term4data.csv
+
+nano mapper.py 
+
+cat Term4data.csv| python mapper.py 
+
+nano reducer.py 
+
+cat Term4data.csv| python mapper.py | python reducer.py 
+
+start-all.sh
+
+jps
+
+hdfs dfs -mkdir /T4
+
+hdfs dfs -copyFromLocal /home/hduser/Documents/Term4data.csv  /T4
+
+hdfs dfs -ls /
+
+chmod 777 mapper.py reducer.py 
+
+ls -l
+
+hadoop jar /home/hduser/Documents/hadoop-streaming-2.7.3.jar \
+
+> -input  /T4/ Term4data.csv \
+> -output  /T4/output \
+> -mapper  /home/hduser/Documents/mapper.py \
+> -reducer  /home/hduser/Documents/reducer.py 
+
+hdfs dfs -cat /T4 /output/part-00000
