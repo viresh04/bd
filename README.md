@@ -64,37 +64,16 @@ $ hadoop jar /home/hduser/Documents/hadoop-streaming-2.7.3.jar \
 ```py
 hdfs dfs -cat /T4 /output/part-00000
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#5 twermwork
+```py
+E002, Harsh, IT, 50000
+E003, Ragini, IT, 75000
+E004, Mithun, Accounts, 20000 
+E005, Pruthavi, Marketing, 45000
+E006, Anjali, IT, 70000
+E007, Kunal, Marketing, 60000
+E008, Mitali, Accounts, 55000
+```
 # 4. TERMWORK4
 # 4. mapper.py
 
