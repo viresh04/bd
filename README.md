@@ -89,7 +89,36 @@ for line in sys.stdin:
         opinion = line[4]
         print '%s\t%s' % (pid, opinion)
 ```
+# 3: Map Reduce program to calculate the average age for each gender.
+# 3. mapper.py
 
+```py
+#!/usr/bin/python
+import sys
+for line in sys.stdin:
+    line = line.strip()
+    line = line.split(",")
+    if len(line) >=2:
+        gender = line[1]
+        age = line[2]
+        print '%s\t%s' % (gender, age)
+# 3. reducer.py
+
+```py
+#!/usr/bin/python
+import sys
+gender_age = {}
+for line in sys.stdin:
+    line = line.strip()
+    gender, age = line.split('\t')
+    if gender in gender_age:
+        gender_age[gender].append(int(age))
+    else:
+        gender_age[gender] = []
+        gender_age[gender].append(int(age))
+for gender in gender_age.keys():
+    ave_age = sum(gender_age[gender])*1.0 / len(gender_age[gender])
+    print '%s\t%s'% (gender, ave_age)
 # 4. reducer.py
 
 ```py
