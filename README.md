@@ -74,22 +74,7 @@ E005, Pruthavi, Marketing, 45000
 E006, Anjali, IT, 70000
 E007, Kunal, Marketing, 60000
 E008, Mitali, Accounts, 55000
-```
-# 4. TERMWORK4
-# 4. mapper.py
-
-```py
-#!/usr/bin/env python
-import sys
-for line in sys.stdin:
-    line = line.strip()
-    line = line.split(",")
-    if len(line) >=2:
-        pid = line[0]
-        opinion = line[4]
-        print '%s\t%s' % (pid, opinion)
-```
-# 3: Map Reduce program to calculate the average age for each gender.
+```# 3: Map Reduce program to calculate the average age for each gender.
 # 3. mapper.py
 
 ```py
@@ -102,6 +87,8 @@ for line in sys.stdin:
         gender = line[1]
         age = line[2]
         print '%s\t%s' % (gender, age)
+```
+
 # 3. reducer.py
 
 ```py
@@ -119,6 +106,24 @@ for line in sys.stdin:
 for gender in gender_age.keys():
     ave_age = sum(gender_age[gender])*1.0 / len(gender_age[gender])
     print '%s\t%s'% (gender, ave_age)
+```
+
+#
+# 4. TERMWORK4
+# 4. mapper.py
+
+```py
+#!/usr/bin/env python
+import sys
+for line in sys.stdin:
+    line = line.strip()
+    line = line.split(",")
+    if len(line) >=2:
+        pid = line[0]
+        opinion = line[4]
+        print '%s\t%s' % (pid, opinion)
+```
+
 # 4. reducer.py
 
 ```py
