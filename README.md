@@ -64,7 +64,8 @@ $ hadoop jar /home/hduser/Documents/hadoop-streaming-2.7.3.jar \
 ```py
 hdfs dfs -cat /T4 /output/part-00000
 ```
-# 5 twermwork
+# 5 twermwork csv file
+
 ```py
 E002, Harsh, IT, 50000
 E003, Ragini, IT, 75000
