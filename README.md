@@ -1,3 +1,100 @@
+# 4 termwork
+```py
+cd Documents/
+```
+```py
+nano Term4data.csv
+```
+```py
+1, M, 25000, 2, Agree
+2, F, 50000, 1, Disagree
+3,M,75000,0,Neutral
+4,F,80000,2,Agree
+5,F,10000,1,DisAgree
+6,F,20000,3,Neutral
+```
+```py
+nano mapper.py 
+```
+```py
+cat Term4data.csv| python mapper.py 
+```
+```py
+nano reducer.py 
+```
+```py
+cat Term4data.csv| python mapper.py | python reducer.py 
+```
+```py
+start-all.sh
+```
+```py
+jps
+```
+```py
+hdfs dfs -mkdir /T4
+```
+```py
+hdfs dfs -copyFromLocal /home/hduser/Documents/Term4data.csv  /T4
+```
+```py
+hdfs dfs -ls /
+```
+```py
+chmod 777 mapper.py reducer.py 
+```
+```py
+ls -l
+```
+```py
+$ hadoop jar /home/hduser/Documents/hadoop-streaming-2.7.3.jar \
+```
+```py
+-input  /T4/ Term4data.csv \
+```
+```py
+-output  /T4/output \
+```
+```py
+-mapper  /home/hduser/Documents/mapper.py \
+```
+```py
+-reducer  /home/hduser/Documents/reducer.py 
+```
+```py
+hdfs dfs -cat /T4 /output/part-00000
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 4. TERMWORK4
 # 4. mapper.py
 
