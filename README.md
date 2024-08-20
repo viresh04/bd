@@ -1,3 +1,7 @@
+## safemode off cmd
+```py
+hdfs dfsadmin -safemode leave
+```
 #  3rd and 4th and 5th termwork
 
 #3rd prg csv
