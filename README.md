@@ -26,6 +26,13 @@ nano Term4data.csv
 4,F,80000,2,Agree
 5,F,10000,1,DisAgree
 6,F,20000,3,Neutral
+7,M,17000,0,DisAgree
+8,F,15000,0,DisAgree
+9,M,60000,1,Agree
+10,F,45000,1,Agree
+11,F,46000,3,DisAgree
+12,F,50000,3,Neutral
+
 ```
 ```py
 nano mapper.py 
@@ -81,6 +88,7 @@ hdfs dfs -cat /T4 /output/part-00000
 # 5 twermwork csv file
 
 ```py
+E001, Sunita, Accounts, 15000 
 E002, Harsh, IT, 50000
 E003, Ragini, IT, 75000
 E004, Mithun, Accounts, 20000 
@@ -88,6 +96,14 @@ E005, Pruthavi, Marketing, 45000
 E006, Anjali, IT, 70000
 E007, Kunal, Marketing, 60000
 E008, Mitali, Accounts, 55000
+E009, Roopa, IT, 70000
+E010, Deepti, Accounts, 30000 
+E011, Janavi, Marketing, 25000
+E012, Lata, Accounts, 30000 
+E013, Brijmohan, Marketing, 45000
+E014, Nina, Accounts, 50000
+E015, Pallavi, Marketing, 25000
+
 ```
 # 3: Map Reduce program to calculate the average age for each gender.
 # 3. mapper.py
