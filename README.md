@@ -2,6 +2,8 @@
 ```py
 hdfs dfsadmin -safemode leave
 ```
+# localhost 50070
+
 #  3rd and 4th and 5th termwork
 
 #3rd prg csv
